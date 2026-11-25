@@ -45,24 +45,33 @@ h2{font-size:clamp(1.8rem,5vw,2.6rem);margin-bottom:14px}
 /* Header */
 header{position:sticky;top:0;z-index:20;background:rgba(255,255,255,.9);backdrop-filter:saturate(1.4) blur(10px);border-bottom:1px solid transparent;transition:border-color .2s}
 header.scrolled{border-color:var(--line)}
-.nav{display:flex;align-items:center;justify-content:space-between;height:64px}
-.logo{display:flex;align-items:center;gap:8px;font-weight:800;font-size:1.3rem;text-decoration:none;letter-spacing:-.02em}
-.logo svg{width:32px;height:32px}
-.nav-links{display:none;gap:28px;font-size:.95rem;font-weight:600}
-.nav-links a{text-decoration:none;color:var(--muted)}.nav-links a:hover{color:var(--navy)}
-.nav .btn{min-height:42px;padding:0 18px;font-size:.92rem}
+.nav{display:flex;align-items:center;justify-content:space-between;height:72px}
+.logo{display:flex;align-items:center;gap:12px;font-weight:800;font-size:1.6rem;text-decoration:none;letter-spacing:-.03em}
+.logo svg{width:40px;height:40px}
+.nav-links{display:none;gap:34px;font-size:.95rem;font-weight:500}
+.nav-links a{text-decoration:none;color:var(--muted);position:relative;padding:6px 0}
+.nav-links a::after{content:"";position:absolute;left:0;right:0;bottom:0;height:2px;background:var(--teal-d);transform:scaleX(0);transform-origin:left;transition:transform .2s}
+.nav-links a:hover{color:var(--navy)}.nav-links a:hover::after{transform:scaleX(1)}
+.nav .btn{min-height:44px;padding:0 22px;font-size:.92rem}
 
 /* Hero */
-.hero{padding:40px 0 64px;background:radial-gradient(1200px 500px at 85% -10%,#DDF5F6 0,transparent 60%),linear-gradient(#fff,var(--bg))}
-.hero-grid{display:grid;gap:36px;align-items:center}
-.hero h1{font-size:clamp(2.3rem,8.5vw,3.8rem);font-weight:800;letter-spacing:-.04em}
-.hero h1 span{color:var(--teal-d)}
-.hero p{font-size:1.12rem;color:var(--muted);margin:16px 0 28px;max-width:500px}
+.hero{position:relative;padding:40px 0 72px;background:linear-gradient(#fff,var(--bg));overflow:hidden}
+.hero::before{content:"";position:absolute;inset:0;background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);background-size:56px 56px;opacity:.55;-webkit-mask-image:radial-gradient(ellipse 70% 80% at 75% 30%,#000 10%,transparent 70%);mask-image:radial-gradient(ellipse 70% 80% at 75% 30%,#000 10%,transparent 70%);pointer-events:none}
+.hero .wrap{position:relative}
+.hero-grid{display:grid;gap:44px;align-items:center}
+.hero h1{font-size:clamp(2.5rem,10vw,4.1rem);font-weight:800;letter-spacing:-.045em;line-height:1.02}
+.hero h1 span{color:var(--teal-d);white-space:nowrap}
+.hero p{font-size:1.15rem;color:var(--muted);margin:22px 0 32px;max-width:480px}
 .cta-row{display:flex;flex-direction:column;gap:12px}
-.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:22px}
-.chip{display:inline-flex;align-items:center;gap:6px;font-size:.86rem;font-weight:600;color:var(--navy);background:#fff;border:1px solid var(--line);padding:6px 12px;border-radius:2px}
-.chip svg{width:16px;height:16px;color:var(--teal)}
-.hero-art{background:#fff;border-radius:6px;box-shadow:var(--shadow);padding:14px;border:1px solid var(--line)}
+.cta-row .btn{min-height:56px;font-size:1rem}
+.chips{display:flex;flex-wrap:wrap;gap:10px 20px;margin-top:28px;padding-top:24px;border-top:1px solid var(--line);max-width:580px}
+.chip{display:inline-flex;align-items:center;gap:8px;font-size:.9rem;font-weight:500;color:var(--muted)}
+.chip svg{width:18px;height:18px;color:var(--teal-d)}
+.hero-art{position:relative;background:#fff;border-radius:6px;box-shadow:var(--shadow);padding:10px;border:1px solid var(--line)}
+.float-card{position:absolute;left:-14px;bottom:-22px;display:flex;align-items:center;gap:12px;background:var(--navy);color:#fff;padding:14px 18px;border-radius:4px;box-shadow:0 18px 40px -16px rgba(11,42,92,.55)}
+.float-card svg{width:22px;height:22px;color:var(--teal-l)}
+.float-card strong{display:block;font-size:1.15rem;line-height:1.1;letter-spacing:-.02em}
+.float-card span{display:block;font-size:.78rem;color:#B9C7DE}
 .pulse{animation:pulse 2.6s ease-out infinite;transform-origin:center;transform-box:fill-box}
 .pulse.d2{animation-delay:.9s}.pulse.d3{animation-delay:1.8s}
 @keyframes pulse{0%{opacity:.9;transform:scale(.6)}100%{opacity:0;transform:scale(1.6)}}
@@ -171,8 +180,12 @@ footer .logo{color:#fff}
 @media (min-width:900px){
   section{padding:96px 0}
   .nav-links{display:flex}
-  .hero{padding:72px 0 96px}
-  .hero-grid{grid-template-columns:1.05fr .95fr;gap:56px}
+  .hero{padding:56px 0 112px}
+  .hero-grid{grid-template-columns:1fr 1fr;gap:72px}
+  .nav{height:84px}
+  .logo{font-size:1.85rem}.logo svg{width:46px;height:46px}
+  footer .logo{font-size:1.6rem}footer .logo svg{width:40px;height:40px}
+  .float-card{left:-28px;bottom:-28px}
   .grid-b{grid-template-columns:repeat(3,1fr)}
   .share{padding:56px}
   .share-grid{grid-template-columns:1fr 1fr 1fr;align-items:start}
@@ -216,21 +229,21 @@ footer .logo{color:#fff}
   <div class="wrap hero-grid">
     <div>
       <span class="eyebrow">Wifi entre vecinos</span>
-      <h1>Internet en todos lados por <span>USD 4 al mes</span></h1>
+      <h1>Internet en<br>todos lados por<br><span>USD 4 al mes</span></h1>
       <p>Compartís un poquito de tu internet y te conectás al wifi de cualquier casa W-7 del país. Sin equipos, sin instalación, sin contrato.</p>
       <div class="cta-row">
         <a href="#precio" class="btn btn-primary">Quiero sumarme<i data-lucide="arrow-right"></i></a>
         <a href="#como-funciona" class="btn btn-ghost">Cómo funciona</a>
       </div>
       <div class="chips">
-        <span class="chip"><i data-lucide="circle-check"></i>Impuestos incluidos</span>
         <span class="chip"><i data-lucide="circle-check"></i>Cancelás cuando quieras</span>
         <span class="chip"><i data-lucide="circle-check"></i>App para Android</span>
       </div>
     </div>
 
-    <div class="hero-art" aria-hidden="true">
-      <svg viewBox="0 0 440 340" role="img">
+    <div class="hero-art">
+      <div class="float-card"><i data-lucide="wifi"></i><div><strong>USD 4 / mes</strong><span>Impuestos incluidos · sin contrato</span></div></div>
+      <svg viewBox="0 0 440 340" aria-hidden="true">
         <defs>
           <linearGradient id="g1" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#2DBFC6"/><stop offset="1" stop-color="#0E8791"/></linearGradient>
           <pattern id="dots" width="16" height="16" patternUnits="userSpaceOnUse"><circle cx="2" cy="2" r="1.2" fill="#D6E2EF"/></pattern>
