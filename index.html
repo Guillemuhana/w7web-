@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+<html lang="es-AR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>W-7 · Internet en todo el barrio por USD 4 al mes</title>
+<meta name="description" content="W-7 es una red de wifi entre vecinos. Compartís una parte de tu internet y usás el wifi de cualquier casa W-7 del país. USD 4 por mes, sin equipos ni instalación.">
+<meta name="theme-color" content="#123C7E">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<style>
+:root{
+  --navy:#123C7E;--navy-2:#0B2A5C;--teal:#17A5AE;--teal-l:#2DBFC6;--teal-d:#0E8791;
+  --bg:#F6F8FB;--white:#fff;--line:#E3E9F1;--muted:#5B6B85;--soft:#E9F7F8;
+  --r:18px;--shadow:0 10px 30px -12px rgba(18,60,126,.22);
+  --grad:linear-gradient(135deg,var(--teal-l),var(--teal-d));
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:72px}
+body{font-family:system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;color:var(--navy);background:var(--white);line-height:1.6;-webkit-font-smoothing:antialiased}
+img,svg{display:block;max-width:100%}
+a{color:inherit}
+.wrap{width:100%;max-width:1120px;margin:0 auto;padding:0 20px}
+section{padding:72px 0}
+h1,h2,h3{line-height:1.15;letter-spacing:-.02em;color:var(--navy)}
+h2{font-size:clamp(1.7rem,5vw,2.4rem);margin-bottom:12px}
+.lead{color:var(--muted);font-size:1.05rem;max-width:560px}
+.center{text-align:center}.center .lead{margin:0 auto}
+.eyebrow{display:inline-block;font-size:.78rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--teal-d);background:var(--soft);padding:6px 12px;border-radius:99px;margin-bottom:14px}
+
+/* Botones */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:52px;padding:0 26px;border-radius:14px;font-weight:700;font-size:1rem;text-decoration:none;cursor:pointer;border:0;transition:transform .15s,box-shadow .15s}
+.btn:active{transform:scale(.98)}
+.btn-primary{background:var(--grad);color:#fff;box-shadow:0 10px 24px -10px rgba(14,135,145,.7)}
+.btn-primary:hover{box-shadow:0 14px 28px -10px rgba(14,135,145,.85)}
+.btn-ghost{background:#fff;color:var(--navy);border:1.5px solid var(--line)}
+.btn-ghost:hover{border-color:var(--teal)}
+.btn-wa{background:#1FAF5A;color:#fff;font-size:1.1rem;min-height:60px;width:100%;box-shadow:0 12px 26px -12px rgba(31,175,90,.8)}
+.btn:focus-visible,input:focus-visible,summary:focus-visible,a:focus-visible{outline:3px solid var(--teal-l);outline-offset:3px}
+
+/* Header */
+header{position:sticky;top:0;z-index:20;background:rgba(255,255,255,.9);backdrop-filter:saturate(1.4) blur(10px);border-bottom:1px solid transparent;transition:border-color .2s}
+header.scrolled{border-color:var(--line)}
+.nav{display:flex;align-items:center;justify-content:space-between;height:64px}
+.logo{display:flex;align-items:center;gap:8px;font-weight:800;font-size:1.3rem;text-decoration:none;letter-spacing:-.02em}
+.logo svg{width:32px;height:32px}
+.nav-links{display:none;gap:28px;font-size:.95rem;font-weight:600}
+.nav-links a{text-decoration:none;color:var(--muted)}.nav-links a:hover{color:var(--navy)}
+.nav .btn{min-height:42px;padding:0 18px;font-size:.92rem}
+
+/* Hero */
+.hero{padding:40px 0 64px;background:radial-gradient(1200px 500px at 85% -10%,#DDF5F6 0,transparent 60%),linear-gradient(#fff,var(--bg))}
+.hero-grid{display:grid;gap:36px;align-items:center}
+.hero h1{font-size:clamp(2.2rem,8.5vw,3.6rem);font-weight:800}
+.hero h1 span{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero p{font-size:1.12rem;color:var(--muted);margin:16px 0 28px;max-width:500px}
+.cta-row{display:flex;flex-direction:column;gap:12px}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:22px}
+.chip{display:inline-flex;align-items:center;gap:6px;font-size:.86rem;font-weight:600;color:var(--navy);background:#fff;border:1px solid var(--line);padding:6px 12px;border-radius:99px}
+.chip svg{width:16px;height:16px;color:var(--teal)}
+.hero-art{background:#fff;border-radius:28px;box-shadow:var(--shadow);padding:14px;border:1px solid var(--line)}
+.pulse{animation:pulse 2.6s ease-out infinite;transform-origin:center;transform-box:fill-box}
+.pulse.d2{animation-delay:.9s}.pulse.d3{animation-delay:1.8s}
+@keyframes pulse{0%{opacity:.9;transform:scale(.6)}100%{opacity:0;transform:scale(1.6)}}
+.dash{stroke-dasharray:4 6;animation:dash 1.4s linear infinite}
+@keyframes dash{to{stroke-dashoffset:-20}}
+
+/* Pasos */
+.steps{display:grid;gap:18px;margin-top:40px;counter-reset:s}
+.step{position:relative;background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:26px 22px 24px;box-shadow:0 2px 0 rgba(18,60,126,.03)}
+.step-num{position:absolute;top:22px;right:22px;font-size:.8rem;font-weight:800;color:var(--teal-d);background:var(--soft);width:30px;height:30px;border-radius:50%;display:grid;place-items:center}
+.ico{width:56px;height:56px;border-radius:16px;background:var(--soft);display:grid;place-items:center;color:var(--teal-d);margin-bottom:16px}
+.ico svg{width:28px;height:28px}
+.step h3,.card h3{font-size:1.18rem;margin-bottom:6px}
+.step p,.card p{color:var(--muted)}
+
+/* Beneficios */
+.bg-soft{background:var(--bg)}
+.grid-b{display:grid;gap:14px;margin-top:36px}
+.card{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:22px;display:flex;gap:16px;align-items:flex-start}
+.card .ico{margin:0;flex:0 0 auto;width:48px;height:48px;border-radius:14px}
+.card .ico svg{width:24px;height:24px}
+
+/* Precio */
+.price-card{max-width:440px;margin:36px auto 0;background:#fff;border-radius:26px;border:1px solid var(--line);box-shadow:var(--shadow);overflow:hidden}
+.price-top{background:linear-gradient(160deg,var(--navy),var(--navy-2));color:#fff;padding:30px 28px;text-align:center;position:relative;overflow:hidden}
+.price-top::after{content:"";position:absolute;inset:auto -40px -80px auto;width:220px;height:220px;border-radius:50%;background:radial-gradient(circle,rgba(45,191,198,.45),transparent 70%)}
+.price-top .tag{font-size:.82rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;opacity:.8}
+.amount{font-size:4rem;font-weight:800;line-height:1;margin:10px 0 4px;letter-spacing:-.04em}
+.amount small{font-size:1.4rem;font-weight:700;vertical-align:top;margin-right:4px;position:relative;top:10px}
+.amount span{font-size:1.1rem;font-weight:600;opacity:.8;letter-spacing:0}
+.price-top p{opacity:.85;font-size:.95rem}
+.price-body{padding:26px 28px 30px}
+.checks{list-style:none;display:grid;gap:12px;margin-bottom:24px}
+.checks li{display:flex;gap:12px;align-items:flex-start}
+.checks svg{flex:0 0 22px;width:22px;height:22px;color:var(--teal);margin-top:2px}
+.price-body .btn{width:100%}
+.mp{display:flex;align-items:center;justify-content:center;gap:8px;margin-top:14px;font-size:.88rem;color:var(--muted)}
+.mp svg{width:20px;height:20px;color:var(--teal-d)}
+
+/* Compartir */
+.share{background:linear-gradient(160deg,var(--navy),var(--navy-2));color:#fff;border-radius:28px;padding:40px 24px;position:relative;overflow:hidden}
+.share h2,.share h3{color:#fff}
+.share .eyebrow{background:rgba(45,191,198,.18);color:#7FE3E7}
+.share .lead{color:#C7D4EA}
+.share-grid{display:grid;gap:28px;margin-top:28px}
+.share-col h3{font-size:1.15rem;margin-bottom:14px;display:flex;align-items:center;gap:10px}
+.share-col h3 svg{width:24px;height:24px;color:var(--teal-l)}
+.share ul{list-style:none;display:grid;gap:12px}
+.share li{display:flex;gap:12px;color:#DCE5F3}
+.share li svg{flex:0 0 20px;width:20px;height:20px;color:var(--teal-l);margin-top:3px}
+.net-diagram{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);border-radius:20px;padding:16px}
+
+/* FAQ */
+.faq{max-width:760px;margin:36px auto 0;display:grid;gap:10px}
+details{background:#fff;border:1px solid var(--line);border-radius:16px;transition:border-color .2s}
+details[open]{border-color:var(--teal)}
+summary{list-style:none;cursor:pointer;padding:18px 20px;font-weight:700;display:flex;justify-content:space-between;align-items:center;gap:16px}
+summary::-webkit-details-marker{display:none}
+summary .pm{flex:0 0 28px;height:28px;border-radius:50%;background:var(--soft);display:grid;place-items:center;color:var(--teal-d);transition:transform .25s}
+details[open] summary .pm{transform:rotate(45deg)}
+details p{padding:0 20px 20px;color:var(--muted)}
+
+/* Contacto */
+.contact-grid{display:grid;gap:22px;margin-top:36px;max-width:880px;margin-left:auto;margin-right:auto}
+.box{background:#fff;border:1px solid var(--line);border-radius:22px;padding:26px 22px}
+.box h3{font-size:1.2rem;margin-bottom:6px}
+.box > p{color:var(--muted);margin-bottom:20px}
+.field{display:grid;gap:6px;margin-bottom:14px}
+.field label{font-weight:600;font-size:.92rem}
+.field input{height:52px;border:1.5px solid var(--line);border-radius:12px;padding:0 14px;font-size:1rem;color:var(--navy);background:var(--bg);font-family:inherit}
+.field input:focus{border-color:var(--teal);background:#fff;outline:none}
+.form-note{font-size:.85rem;color:var(--muted);margin-top:10px;min-height:1.2em}
+.form-note.ok{color:var(--teal-d);font-weight:600}
+.form-note.err{color:#C0392B;font-weight:600}
+.box form .btn{width:100%}
+
+/* Footer */
+footer{background:var(--navy-2);color:#B9C7DE;padding:44px 0 28px;font-size:.92rem}
+.foot{display:grid;gap:26px}
+footer .logo{color:#fff}
+.foot-links{display:flex;flex-wrap:wrap;gap:12px 22px}
+.foot-links a{text-decoration:none;color:#DCE5F3}.foot-links a:hover{color:#fff}
+.foot-bottom{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px;border-top:1px solid rgba(255,255,255,.1);margin-top:28px;padding-top:18px;font-size:.82rem}
+.login{color:#8FA3C4;text-decoration:none;font-size:.8rem}.login:hover{color:#fff;text-decoration:underline}
+
+/* Barra fija en celular */
+.mobile-cta{position:fixed;left:12px;right:12px;bottom:12px;z-index:30;transform:translateY(140%);transition:transform .3s}
+.mobile-cta.show{transform:none}
+.mobile-cta .btn{width:100%;box-shadow:0 14px 30px -10px rgba(11,42,92,.5)}
+
+/* Aparición */
+.reveal{opacity:0;transform:translateY(16px);transition:opacity .6s,transform .6s}
+.reveal.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.reveal{opacity:1;transform:none}html{scroll-behavior:auto}}
+
+/* Tablet / escritorio */
+@media (min-width:640px){
+  .cta-row{flex-direction:row}
+  .grid-b{grid-template-columns:1fr 1fr}
+  .steps{grid-template-columns:repeat(3,1fr)}
+}
+@media (min-width:900px){
+  section{padding:96px 0}
+  .nav-links{display:flex}
+  .hero{padding:72px 0 96px}
+  .hero-grid{grid-template-columns:1.05fr .95fr;gap:56px}
+  .grid-b{grid-template-columns:repeat(3,1fr)}
+  .share{padding:56px}
+  .share-grid{grid-template-columns:1fr 1fr 1fr;align-items:start}
+  .contact-grid{grid-template-columns:1fr 1fr}
+  .foot{grid-template-columns:1.2fr 2fr;align-items:center}
+  .foot-links{justify-content:flex-end}
+  .mobile-cta{display:none}
+}
+</style>
+</head>
+<body>
+
+<!-- Íconos reutilizables -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="i-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10" fill="currentColor" opacity=".14" stroke="none"/><path d="m7.5 12.5 3 3 6-6.5"/></symbol>
+    <symbol id="i-wifi" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M2 8.8a15 15 0 0 1 20 0"/><path d="M5.5 12.3a10 10 0 0 1 13 0"/><path d="M9 15.8a5 5 0 0 1 6 0"/><circle cx="12" cy="19.2" r="1.3" fill="currentColor"/></symbol>
+    <symbol id="i-card" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="5" width="19" height="14" rx="3"/><path d="M2.5 10h19M6.5 15h4"/></symbol>
+    <symbol id="i-phone" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="2.5" width="12" height="19" rx="2.5"/><path d="M11 18.5h2"/><path d="M12 7v6m-2.5-2.5L12 13l2.5-2.5"/></symbol>
+    <symbol id="i-auto" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="2.5" width="12" height="19" rx="2.5"/><path d="M8.8 10a4.5 4.5 0 0 1 6.4 0"/><path d="M10.4 12.3a2.2 2.2 0 0 1 3.2 0"/><circle cx="12" cy="14.6" r=".9" fill="currentColor"/></symbol>
+    <symbol id="i-box" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 7.5 12 3l8.5 4.5v9L12 21l-8.5-4.5z"/><path d="M3.5 7.5 12 12l8.5-4.5M12 12v9"/><path d="m4 20 16-16" stroke-width="2.2"/></symbol>
+    <symbol id="i-tool" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 6.5a4 4 0 0 0-5.4 5l-5.6 5.6a1.8 1.8 0 0 0 2.5 2.5l5.6-5.6a4 4 0 0 0 5-5.4l-2.4 2.4-2.1-.4-.4-2.1z"/></symbol>
+    <symbol id="i-doc" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5"/><path d="m9.5 13.5 5 5m0-5-5 5"/></symbol>
+    <symbol id="i-x" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M9 12h6"/><path d="M12 3v3"/></symbol>
+    <symbol id="i-shield" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.8 4.5 5.8v5.4c0 4.7 3.2 8.6 7.5 10 4.3-1.4 7.5-5.3 7.5-10V5.8z"/><path d="m8.8 12 2.3 2.3 4.3-4.6"/></symbol>
+    <symbol id="i-map" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-6.5-5.6-6.5-11a6.5 6.5 0 0 1 13 0c0 5.4-6.5 11-6.5 11z"/><circle cx="12" cy="10" r="2.4"/></symbol>
+    <symbol id="i-home" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 11 12 4l8.5 7"/><path d="M5.5 9.5V20h13V9.5"/><path d="M10 20v-5h4v5"/></symbol>
+    <symbol id="i-gift" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="9" r="3.2"/><circle cx="16.5" cy="10.5" r="2.4"/><path d="M3.5 19.5c.6-3 3-4.8 5.5-4.8s4.9 1.8 5.5 4.8"/><path d="M14.5 15.3c.6-.4 1.3-.6 2-.6 2 0 3.6 1.4 4 3.6"/></symbol>
+    <symbol id="i-plus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M12 6v12M6 12h12"/></symbol>
+    <symbol id="i-wa" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.3-.4.8-1.4.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2c0 1.3 1 2.6 1.1 2.8.1.2 1.9 2.9 4.6 4 1.7.7 2.4.8 3.2.7.5-.1 1.5-.6 1.8-1.2.2-.6.2-1.1.1-1.2l-.5-.3z"/></symbol>
+  </defs>
+</svg>
+
+<header id="top">
+  <div class="wrap nav">
+    <a href="#top" class="logo" aria-label="W-7 inicio">
+      <svg viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="9" fill="url(#lg)"/><defs><linearGradient id="lg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#2DBFC6"/><stop offset="1" stop-color="#0E8791"/></linearGradient></defs><g fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round"><path d="M7.5 13.2a12 12 0 0 1 17 0"/><path d="M10.8 16.6a7.4 7.4 0 0 1 10.4 0"/></g><circle cx="16" cy="21.4" r="2.2" fill="#fff"/></svg>
+      W-7
+    </a>
+    <nav class="nav-links" aria-label="Principal">
+      <a href="#como-funciona">Cómo funciona</a>
+      <a href="#precio">Precio</a>
+      <a href="#compartir">Compartir</a>
+      <a href="#preguntas">Preguntas</a>
+      <a href="#contacto">Contacto</a>
+    </nav>
+    <a href="#precio" class="btn btn-primary">Sumarme</a>
+  </div>
+</header>
+
+<main>
+
+<!-- 1. PORTADA -->
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <span class="eyebrow">Wifi entre vecinos</span>
+      <h1>Internet en todo el barrio por <span>USD 4 al mes</span></h1>
+      <p>Compartís un poquito de tu internet y te conectás al wifi de cualquier casa W-7 del país. Sin equipos, sin instalación, sin contrato.</p>
+      <div class="cta-row">
+        <a href="#precio" class="btn btn-primary">Quiero sumarme</a>
+        <a href="#como-funciona" class="btn btn-ghost">Cómo funciona</a>
+      </div>
+      <div class="chips">
+        <span class="chip"><svg><use href="#i-check"/></svg>Impuestos incluidos</span>
+        <span class="chip"><svg><use href="#i-check"/></svg>Cancelás cuando quieras</span>
+        <span class="chip"><svg><use href="#i-check"/></svg>App para Android</span>
+      </div>
+    </div>
+
+    <div class="hero-art" aria-hidden="true">
+      <svg viewBox="0 0 440 340" role="img">
+        <defs>
+          <linearGradient id="g1" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#2DBFC6"/><stop offset="1" stop-color="#0E8791"/></linearGradient>
+          <pattern id="dots" width="16" height="16" patternUnits="userSpaceOnUse"><circle cx="2" cy="2" r="1.2" fill="#D6E2EF"/></pattern>
+          <g id="house">
+            <path d="M-26 -6 0 -28 26 -6" fill="none" stroke="#123C7E" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+            <rect x="-20" y="-10" width="40" height="34" rx="4" fill="#fff" stroke="#123C7E" stroke-width="3"/>
+            <rect x="-6" y="6" width="12" height="18" rx="2" fill="#123C7E"/>
+            <rect x="-15" y="-3" width="8" height="8" rx="1.5" fill="#CFEFF1"/>
+            <rect x="7" y="-3" width="8" height="8" rx="1.5" fill="#CFEFF1"/>
+          </g>
+        </defs>
+        <rect width="440" height="340" rx="20" fill="#F6F8FB"/>
+        <rect width="440" height="340" rx="20" fill="url(#dots)"/>
+        <!-- calles -->
+        <path d="M0 170 H440 M220 0 V340" stroke="#fff" stroke-width="22"/>
+        <path d="M0 170 H440 M220 0 V340" stroke="#E3E9F1" stroke-width="2" stroke-dasharray="10 10"/>
+        <!-- conexiones -->
+        <g stroke="#17A5AE" stroke-width="2.5" fill="none" class="dash" opacity=".8">
+          <path d="M100 95 Q160 60 330 85"/>
+          <path d="M100 95 Q90 180 110 255"/>
+          <path d="M330 85 Q350 180 320 255"/>
+          <path d="M110 255 Q220 300 320 255"/>
+          <path d="M100 95 L320 255"/>
+        </g>
+        <!-- ondas -->
+        <g fill="none" stroke="#2DBFC6" stroke-width="2">
+          <circle cx="100" cy="95" r="34" class="pulse"/>
+          <circle cx="330" cy="85" r="34" class="pulse d2"/>
+          <circle cx="320" cy="255" r="34" class="pulse d3"/>
+          <circle cx="110" cy="255" r="34" class="pulse d2"/>
+        </g>
+        <!-- casas -->
+        <use href="#house" x="100" y="98"/>
+        <use href="#house" x="330" y="88"/>
+        <use href="#house" x="110" y="258"/>
+        <use href="#house" x="320" y="258"/>
+        <!-- celular en el medio -->
+        <g transform="translate(205 142)">
+          <rect x="-6" y="-4" width="42" height="68" rx="9" fill="#123C7E"/>
+          <rect x="-1" y="3" width="32" height="52" rx="5" fill="url(#g1)"/>
+          <g fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round" transform="translate(15 34)">
+            <path d="M-10 -8a14 14 0 0 1 20 0"/><path d="M-5.5 -3.5a7 7 0 0 1 11 0"/>
+          </g>
+          <circle cx="15" cy="36" r="2.4" fill="#fff"/>
+        </g>
+        <!-- badge -->
+        <g transform="translate(250 150)">
+          <rect width="128" height="34" rx="17" fill="#fff" stroke="#E3E9F1"/>
+          <circle cx="18" cy="17" r="6" fill="#1FAF5A"/>
+          <text x="32" y="22" font-family="system-ui,sans-serif" font-size="13" font-weight="700" fill="#123C7E">Conectado solo</text>
+        </g>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<!-- 2. CÓMO FUNCIONA -->
+<section id="como-funciona">
+  <div class="wrap">
+    <div class="center reveal">
+      <span class="eyebrow">Cómo funciona</span>
+      <h2>Tres pasos y listo</h2>
+      <p class="lead">No tenés que configurar nada raro. Te lleva unos minutos.</p>
+    </div>
+    <div class="steps">
+      <article class="step reveal">
+        <span class="step-num">1</span>
+        <div class="ico"><svg><use href="#i-card"/></svg></div>
+        <h3>Te suscribís</h3>
+        <p>Elegís el plan de USD 4 por mes y pagás con Mercado Pago.</p>
+      </article>
+      <article class="step reveal">
+        <span class="step-num">2</span>
+        <div class="ico"><svg><use href="#i-phone"/></svg></div>
+        <h3>Bajás la app</h3>
+        <p>Instalás la app de W-7 en tu celular Android e iniciás sesión.</p>
+      </article>
+      <article class="step reveal">
+        <span class="step-num">3</span>
+        <div class="ico"><svg><use href="#i-auto"/></svg></div>
+        <h3>Tu celular se conecta solo</h3>
+        <p>Cuando pasás cerca de una casa W-7, te conectás sin ver ni escribir claves.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- 3. BENEFICIOS -->
+<section class="bg-soft" id="beneficios">
+  <div class="wrap">
+    <div class="center reveal">
+      <span class="eyebrow">Beneficios</span>
+      <h2>Simple de verdad</h2>
+      <p class="lead">Usás lo que ya tenés en tu casa. Nada más.</p>
+    </div>
+    <div class="grid-b">
+      <div class="card reveal"><div class="ico"><svg><use href="#i-box"/></svg></div><div><h3>Sin equipos</h3><p>No comprás nada. Se usa el módem que ya tenés en tu casa.</p></div></div>
+      <div class="card reveal"><div class="ico"><svg><use href="#i-tool"/></svg></div><div><h3>Sin instalación</h3><p>No hace falta tocar cables ni esperar a nadie.</p></div></div>
+      <div class="card reveal"><div class="ico"><svg><use href="#i-doc"/></svg></div><div><h3>Sin contrato</h3><p>No firmás nada ni te atás a un plazo.</p></div></div>
+      <div class="card reveal"><div class="ico"><svg><use href="#i-x"/></svg></div><div><h3>Cancelás cuando quieras</h3><p>Si no te sirve, lo das de baja y listo. Sin vueltas.</p></div></div>
+      <div class="card reveal"><div class="ico"><svg><use href="#i-shield"/></svg></div><div><h3>Tu red sigue siendo tuya</h3><p>Lo que compartís va por separado. Tu wifi de siempre queda igual y privado.</p></div></div>
+      <div class="card reveal"><div class="ico"><svg><use href="#i-map"/></svg></div><div><h3>Te sirve en todo el país</h3><p>Usás el wifi de cualquier casa W-7, en tu barrio o donde estés.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- 4. PRECIO -->
+<section id="precio">
+  <div class="wrap">
+    <div class="center reveal">
+      <span class="eyebrow">Precio</span>
+      <h2>Un solo plan, sin letra chica</h2>
+      <p class="lead">Lo que ves es lo que pagás.</p>
+    </div>
+    <div class="price-card reveal">
+      <div class="price-top">
+        <div class="tag">Plan W-7</div>
+        <div class="amount"><small>USD</small>4<span>/mes</span></div>
+        <p>Impuestos incluidos · El mes dura 30 días</p>
+      </div>
+      <div class="price-body">
+        <ul class="checks">
+          <li><svg><use href="#i-check"/></svg>Wifi en todas las casas W-7 del país</li>
+          <li><svg><use href="#i-check"/></svg>Conexión automática con la app de Android</li>
+          <li><svg><use href="#i-check"/></svg>Nunca ves ni escribís claves</li>
+          <li><svg><use href="#i-check"/></svg>Usás el módem que ya tenés</li>
+          <li><svg><use href="#i-check"/></svg>Sin contrato: cancelás cuando quieras</li>
+        </ul>
+        <a href="#contacto" class="btn btn-primary" data-cta="suscribirme">Quiero sumarme</a>
+        <div class="mp"><svg><use href="#i-card"/></svg>Pagás con Mercado Pago</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 5. COMPARTIR -->
+<section id="compartir" class="bg-soft">
+  <div class="wrap">
+    <div class="share reveal">
+      <span class="eyebrow">Para quienes comparten</span>
+      <h2>Compartís un poco, ganás todo el país</h2>
+      <p class="lead">Cada casa W-7 suma una parte de su internet a la red. Así todos los vecinos tienen wifi en más lugares.</p>
+
+      <div class="share-grid">
+        <div class="share-col">
+          <h3><svg><use href="#i-gift"/></svg>Qué ganás</h3>
+          <ul>
+            <li><svg><use href="#i-check"/></svg>Wifi en cualquier casa W-7 del país, no solo en la tuya.</li>
+            <li><svg><use href="#i-check"/></svg>Gastás menos datos del celular cuando estás afuera.</li>
+            <li><svg><use href="#i-check"/></svg>Ayudás a que tu barrio esté mejor conectado.</li>
+          </ul>
+        </div>
+        <div class="share-col">
+          <h3><svg><use href="#i-shield"/></svg>Por qué es seguro</h3>
+          <ul>
+            <li><svg><use href="#i-check"/></svg>La red compartida está separada de la red privada de tu casa.</li>
+            <li><svg><use href="#i-check"/></svg>Nadie que se conecte puede ver tus equipos, fotos ni archivos.</li>
+            <li><svg><use href="#i-check"/></svg>Tu clave de siempre no cambia y no se la das a nadie.</li>
+          </ul>
+        </div>
+        <div class="net-diagram" aria-hidden="true">
+          <svg viewBox="0 0 300 220">
+            <!-- módem -->
+            <rect x="120" y="18" width="60" height="30" rx="8" fill="#fff"/>
+            <circle cx="138" cy="33" r="3" fill="#17A5AE"/><circle cx="150" cy="33" r="3" fill="#17A5AE"/><circle cx="162" cy="33" r="3" fill="#2DBFC6"/>
+            <text x="150" y="66" text-anchor="middle" font-family="system-ui,sans-serif" font-size="11" fill="#C7D4EA">Tu módem</text>
+            <path d="M135 48 L70 110" stroke="#7FE3E7" stroke-width="2.5"/>
+            <path d="M165 48 L230 110" stroke="#2DBFC6" stroke-width="2.5" stroke-dasharray="5 5" class="dash"/>
+            <!-- privada -->
+            <rect x="12" y="110" width="118" height="92" rx="14" fill="rgba(255,255,255,.08)" stroke="#7FE3E7" stroke-width="1.5"/>
+            <g transform="translate(46 136)"><path d="M0 8 12 0 24 8v18H0z" fill="none" stroke="#fff" stroke-width="2" stroke-linejoin="round"/><rect x="9" y="16" width="6" height="10" fill="#fff"/></g>
+            <g transform="translate(80 140)" fill="none" stroke="#fff" stroke-width="2"><rect width="14" height="20" rx="3"/></g>
+            <text x="71" y="186" text-anchor="middle" font-family="system-ui,sans-serif" font-size="12" font-weight="700" fill="#fff">Red privada</text>
+            <!-- compartida -->
+            <rect x="170" y="110" width="118" height="92" rx="14" fill="rgba(45,191,198,.14)" stroke="#2DBFC6" stroke-width="1.5"/>
+            <g transform="translate(212 132)" fill="none" stroke="#2DBFC6" stroke-width="2.4" stroke-linecap="round"><path d="M0 8a24 24 0 0 1 34 0"/><path d="M6 15a14 14 0 0 1 22 0"/><circle cx="17" cy="22" r="2" fill="#2DBFC6"/></g>
+            <text x="229" y="186" text-anchor="middle" font-family="system-ui,sans-serif" font-size="12" font-weight="700" fill="#fff">Red W-7</text>
+            <!-- separador -->
+            <g transform="translate(150 156)"><circle r="13" fill="#0B2A5C" stroke="#7FE3E7" stroke-width="1.5"/><path d="M-4 -5v10M4 -5v10" stroke="#fff" stroke-width="2.4" stroke-linecap="round"/></g>
+          </svg>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 6. PREGUNTAS FRECUENTES -->
+<section id="preguntas">
+  <div class="wrap">
+    <div class="center reveal">
+      <span class="eyebrow">Preguntas frecuentes</span>
+      <h2>Lo que más nos preguntan</h2>
+    </div>
+    <div class="faq">
+      <details class="reveal"><summary>¿Necesito comprar un router?<span class="pm"><svg width="16" height="16"><use href="#i-plus"/></svg></span></summary>
+        <p>No. W-7 funciona con el módem que ya tenés en tu casa. No tenés que comprar ni instalar ningún equipo.</p></details>
+      <details class="reveal"><summary>¿Funciona en iPhone?<span class="pm"><svg width="16" height="16"><use href="#i-plus"/></svg></span></summary>
+        <p>Por ahora no. La app está disponible solo para celulares Android.</p></details>
+      <details class="reveal"><summary>¿Pueden ver mis cosas si comparto mi internet?<span class="pm"><svg width="16" height="16"><use href="#i-plus"/></svg></span></summary>
+        <p>No. La red que compartís está separada de la red privada de tu casa. Quien se conecta a W-7 no puede ver tus equipos, tus fotos ni tus archivos.</p></details>
+      <details class="reveal"><summary>¿Tengo que saber alguna clave?<span class="pm"><svg width="16" height="16"><use href="#i-plus"/></svg></span></summary>
+        <p>No. La app conecta tu celular sola a las redes W-7 cercanas. Nunca vas a ver ni escribir una clave.</p></details>
+      <details class="reveal"><summary>¿Cuánto cuesta y cómo pago?<span class="pm"><svg width="16" height="16"><use href="#i-plus"/></svg></span></summary>
+        <p>USD 4 por mes, con impuestos incluidos. Cada mes dura 30 días. Pagás con Mercado Pago.</p></details>
+      <details class="reveal"><summary>¿Cómo cancelo?<span class="pm"><svg width="16" height="16"><use href="#i-plus"/></svg></span></summary>
+        <p>Cuando quieras. No hay contrato ni permanencia. Si tenés dudas para darte de baja, escribinos por WhatsApp y te ayudamos.</p></details>
+      <details class="reveal"><summary>¿Dónde hay casas W-7?<span class="pm"><svg width="16" height="16"><use href="#i-plus"/></svg></span></summary>
+        <p>La red crece a medida que se suman vecinos. Escribinos por WhatsApp con tu barrio y te contamos cómo está la zona.</p></details>
+      <details class="reveal"><summary>¿Me viene a instalar alguien?<span class="pm"><svg width="16" height="16"><use href="#i-plus"/></svg></span></summary>
+        <p>No hace falta. Todo se hace desde tu celular y con el módem que ya tenés.</p></details>
+    </div>
+  </div>
+</section>
+
+<!-- 7. CONTACTO -->
+<section id="contacto" class="bg-soft">
+  <div class="wrap">
+    <div class="center reveal">
+      <span class="eyebrow">Contacto</span>
+      <h2>¿Querés sumarte o tenés dudas?</h2>
+      <p class="lead">Escribinos y te respondemos por WhatsApp.</p>
+    </div>
+    <div class="contact-grid">
+      <div class="box reveal">
+        <h3>Hablemos por WhatsApp</h3>
+        <p>Es la forma más rápida. Contanos en qué barrio estás y te ayudamos a empezar.</p>
+        <a class="btn btn-wa" id="wa-btn" href="#" target="_blank" rel="noopener">
+          <svg width="26" height="26"><use href="#i-wa"/></svg>Escribinos por WhatsApp
+        </a>
+      </div>
+      <div class="box reveal">
+        <h3>O dejanos tus datos</h3>
+        <p>Te escribimos nosotros.</p>
+        <form id="lead-form" novalidate>
+          <div class="field"><label for="f-nombre">Nombre</label><input id="f-nombre" name="nombre" autocomplete="name" required placeholder="Tu nombre"></div>
+          <div class="field"><label for="f-barrio">Barrio</label><input id="f-barrio" name="barrio" autocomplete="address-level3" required placeholder="¿Dónde vivís?"></div>
+          <div class="field"><label for="f-tel">Teléfono</label><input id="f-tel" name="telefono" type="tel" inputmode="tel" autocomplete="tel" required placeholder="Ej: 351 123 4567"></div>
+          <button class="btn btn-primary" type="submit">Enviar</button>
+          <p class="form-note" id="form-note" role="status"></p>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- 8. PIE -->
+<footer>
+  <div class="wrap">
+    <div class="foot">
+      <div>
+        <a href="#top" class="logo" aria-label="W-7 inicio">
+          <svg viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="9" fill="url(#lg)"/><g fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round"><path d="M7.5 13.2a12 12 0 0 1 17 0"/><path d="M10.8 16.6a7.4 7.4 0 0 1 10.4 0"/></g><circle cx="16" cy="21.4" r="2.2" fill="#fff"/></svg>
+          W-7
+        </a>
+        <p style="margin-top:10px;max-width:320px">Wifi entre vecinos. Compartimos internet para estar conectados en todos lados.</p>
+      </div>
+      <nav class="foot-links" aria-label="Pie">
+        <a href="#como-funciona">Cómo funciona</a>
+        <a href="#beneficios">Beneficios</a>
+        <a href="#precio">Precio</a>
+        <a href="#compartir">Compartir</a>
+        <a href="#preguntas">Preguntas</a>
+        <a href="#contacto">Contacto</a>
+      </nav>
+    </div>
+    <div class="foot-bottom">
+      <span>© <span id="year"></span> W-7. Todos los derechos reservados.</span>
+      <a href="/login" class="login" id="login-link">Login</a>
+    </div>
+  </div>
+</footer>
+
+<div class="mobile-cta" id="mobile-cta"><a href="#precio" class="btn btn-primary">Quiero sumarme · USD 4/mes</a></div>
+
+<script>
+/* ===== CONFIGURACIÓN: completar antes de publicar ===== */
+const CONFIG = {
+  whatsapp: "5490000000000",   // número con código de país, sin + ni espacios
+  loginUrl: "/login",          // entrada a la consola
+  formEndpoint: ""             // opcional: URL (ej. webhook n8n) que recibe {nombre, barrio, telefono}
+};
+/* ===================================================== */
+
+const waLink = (msg) => `https://wa.me/${CONFIG.whatsapp}?text=${encodeURIComponent(msg)}`;
+document.getElementById("wa-btn").href = waLink("Hola! Quiero saber más sobre W-7.");
+document.getElementById("login-link").href = CONFIG.loginUrl;
+document.getElementById("year").textContent = new Date().getFullYear();
+
+// Header con borde al scrollear + barra fija en celular
+const header = document.querySelector("header");
+const mcta = document.getElementById("mobile-cta");
+const contacto = document.getElementById("contacto");
+const onScroll = () => {
+  const y = window.scrollY;
+  header.classList.toggle("scrolled", y > 8);
+  const nearContact = contacto.getBoundingClientRect().top < window.innerHeight;
+  mcta.classList.toggle("show", y > 520 && !nearContact);
+};
+window.addEventListener("scroll", onScroll, { passive: true });
+onScroll();
+
+// Aparición suave
+const io = "IntersectionObserver" in window ? new IntersectionObserver((entries) => {
+  entries.forEach((e) => { if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); } });
+}, { threshold: 0.12 }) : null;
+document.querySelectorAll(".reveal").forEach((el) => io ? io.observe(el) : el.classList.add("in"));
+
+// Solo una pregunta abierta a la vez
+document.querySelectorAll(".faq details").forEach((d) => {
+  d.addEventListener("toggle", () => {
+    if (d.open) document.querySelectorAll(".faq details").forEach((o) => { if (o !== d) o.open = false; });
+  });
+});
+
+// Formulario
+const form = document.getElementById("lead-form");
+const note = document.getElementById("form-note");
+form.addEventListener("submit", async (ev) => {
+  ev.preventDefault();
+  const data = Object.fromEntries(new FormData(form));
+  Object.keys(data).forEach((k) => (data[k] = data[k].trim()));
+  note.className = "form-note";
+  if (!data.nombre || !data.barrio || !data.telefono) {
+    note.textContent = "Completá los tres datos, por favor.";
+    note.classList.add("err");
+    return;
+  }
+  if (data.telefono.replace(/\D/g, "").length < 8) {
+    note.textContent = "Revisá el teléfono, parece incompleto.";
+    note.classList.add("err");
+    return;
+  }
+  const btn = form.querySelector("button");
+  btn.disabled = true;
+  try {
+    if (CONFIG.formEndpoint) {
+      const r = await fetch(CONFIG.formEndpoint, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ ...data, origen: "landing-w7" })
+      });
+      if (!r.ok) throw new Error();
+      note.textContent = "¡Listo! Te escribimos pronto.";
+      note.classList.add("ok");
+      form.reset();
+    } else {
+      const msg = `Hola! Quiero sumarme a W-7.\nNombre: ${data.nombre}\nBarrio: ${data.barrio}\nTeléfono: ${data.telefono}`;
+      window.open(waLink(msg), "_blank", "noopener");
+      note.textContent = "Te abrimos WhatsApp con tus datos. Solo tocá enviar.";
+      note.classList.add("ok");
+    }
+  } catch {
+    note.textContent = "No se pudo enviar. Probá por WhatsApp.";
+    note.classList.add("err");
+  } finally {
+    btn.disabled = false;
+  }
+});
+</script>
+</body>
+</html>
