@@ -25,7 +25,7 @@ a{color:inherit}
 .wrap{width:100%;max-width:1120px;margin:0 auto;padding:0 20px}
 section{padding:72px 0}
 h1,h2,h3{line-height:1.12;letter-spacing:-.028em;color:var(--navy);font-weight:700}
-h2{font-size:clamp(1.8rem,5vw,2.6rem);margin-bottom:14px}
+h2{font-size:clamp(1.9rem,5.5vw,2.9rem);margin-bottom:16px}
 .lead{color:var(--muted);font-size:1.06rem;max-width:560px}
 .center{text-align:center}.center .lead{margin:0 auto}
 .eyebrow{display:inline-flex;align-items:center;gap:10px;font-size:.74rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--teal-d);margin-bottom:16px}
@@ -78,75 +78,86 @@ header.scrolled{border-color:var(--line)}
 .dash{stroke-dasharray:4 6;animation:dash 1.4s linear infinite}
 @keyframes dash{to{stroke-dashoffset:-20}}
 
-/* Pasos */
-.steps{display:grid;gap:18px;margin-top:40px;counter-reset:s}
-.step{position:relative;background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:28px 24px 26px;border-top:3px solid var(--teal-d)}
-.step-num{position:absolute;top:24px;right:24px;font-size:.8rem;font-weight:700;color:var(--teal-d);border:1.5px solid var(--teal-d);width:30px;height:30px;border-radius:0;display:grid;place-items:center}
-.ico{width:56px;height:56px;border-radius:4px;background:var(--soft);display:grid;place-items:center;color:var(--teal-d);margin-bottom:16px}
-.ico svg{width:28px;height:28px}
-.step h3,.card h3{font-size:1.18rem;margin-bottom:6px}
+/* Pasos: tres columnas unidas por líneas finas */
+.steps{display:grid;margin-top:52px;border:1px solid var(--line);background:#fff}
+.step{position:relative;padding:34px 30px 32px;border-bottom:1px solid var(--line);transition:background-color .2s}
+.step:last-child{border-bottom:0}
+.step::before{content:"";position:absolute;top:-1px;left:-1px;right:-1px;height:3px;background:var(--teal-d);transform:scaleX(0);transform-origin:left;transition:transform .35s}
+.step:hover::before{transform:scaleX(1)}
+.step-num{display:block;font-size:.74rem;font-weight:600;letter-spacing:.16em;color:var(--teal-d);margin-bottom:26px}
+.step-num::before{content:"PASO "}
+.ico{width:52px;height:52px;border-radius:4px;background:var(--soft);display:grid;place-items:center;color:var(--teal-d);margin-bottom:20px}
+.ico svg{width:26px;height:26px}
+.step h3,.card h3{font-size:1.2rem;margin-bottom:8px}
 .step p,.card p{color:var(--muted)}
 
-/* Beneficios */
+/* Beneficios: grilla con divisores de 1px */
 .bg-soft{background:var(--bg)}
-.grid-b{display:grid;gap:14px;margin-top:36px}
-.card{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:24px;display:flex;gap:16px;align-items:flex-start;transition:border-color .2s}
-.card:hover{border-color:var(--teal)}
-.card .ico{margin:0;flex:0 0 auto;width:48px;height:48px;border-radius:4px}
+.grid-b{display:grid;gap:1px;margin-top:52px;background:var(--line);border:1px solid var(--line)}
+.card{background:#fff;padding:32px 28px;display:flex;flex-direction:column;gap:20px;transition:background-color .2s}
+.card:hover{background:#FBFDFE}
+.card:hover .ico{background:var(--teal-d);color:#fff}
+.card .ico{margin:0;width:48px;height:48px;transition:background-color .2s,color .2s}
 .card .ico svg{width:24px;height:24px}
 
-/* Precio */
-.price-card{max-width:440px;margin:36px auto 0;background:#fff;border-radius:6px;border:1px solid var(--line);box-shadow:var(--shadow);overflow:hidden}
-.price-top{background:linear-gradient(160deg,var(--navy),var(--navy-2));color:#fff;padding:30px 28px;text-align:center;position:relative;overflow:hidden}
-.price-top::after{content:"";position:absolute;inset:auto -40px -80px auto;width:220px;height:220px;border-radius:50%;background:radial-gradient(circle,rgba(45,191,198,.45),transparent 70%)}
-.price-top .tag{font-size:.82rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;opacity:.8}
-.amount{font-size:4rem;font-weight:800;line-height:1;margin:10px 0 4px;letter-spacing:-.04em}
-.amount small{font-size:1.4rem;font-weight:700;vertical-align:top;margin-right:4px;position:relative;top:10px}
-.amount span{font-size:1.1rem;font-weight:600;opacity:.8;letter-spacing:0}
-.price-top p{opacity:.85;font-size:.95rem}
-.price-body{padding:26px 28px 30px}
-.checks{list-style:none;display:grid;gap:12px;margin-bottom:24px}
+/* Precio: tarjeta partida en dos */
+.price-card{max-width:980px;margin:52px auto 0;background:#fff;border-radius:6px;border:1px solid var(--line);box-shadow:var(--shadow);overflow:hidden;display:grid}
+.price-top{background:linear-gradient(160deg,var(--navy),var(--navy-2));color:#fff;padding:40px 32px;position:relative;overflow:hidden;display:flex;flex-direction:column;justify-content:center}
+.price-top::after{content:"";position:absolute;inset:auto -60px -100px auto;width:280px;height:280px;border-radius:50%;background:radial-gradient(circle,rgba(45,191,198,.4),transparent 70%)}
+.price-top > *{position:relative;z-index:1}
+.price-top .tag{font-size:.74rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:#7FE3E7}
+.amount{font-size:clamp(4.2rem,14vw,5.6rem);font-weight:800;line-height:1;margin:18px 0 10px;letter-spacing:-.05em}
+.amount small{font-size:1.4rem;font-weight:700;vertical-align:top;margin-right:6px;position:relative;top:12px;letter-spacing:0}
+.amount span{font-size:1.15rem;font-weight:500;opacity:.75;letter-spacing:0}
+.price-top p{color:#C7D4EA;font-size:.95rem}
+.price-body{padding:36px 32px}
+.price-body h3{font-size:1.05rem;margin-bottom:20px}
+.checks{list-style:none;display:grid;gap:14px;margin-bottom:30px}
 .checks li{display:flex;gap:12px;align-items:flex-start}
-.checks svg{flex:0 0 22px;width:22px;height:22px;color:var(--teal);margin-top:2px}
+.checks svg{flex:0 0 22px;width:22px;height:22px;color:var(--teal-d);margin-top:2px}
 .price-body .btn{width:100%}
 .mp{display:flex;align-items:center;justify-content:center;gap:8px;margin-top:14px;font-size:.88rem;color:var(--muted)}
-.mp svg{width:20px;height:20px;color:var(--teal-d)}
+.mp svg{width:18px;height:18px;color:var(--teal-d)}
 
 /* Compartir */
 .share{background:linear-gradient(160deg,var(--navy),var(--navy-2));color:#fff;border-radius:6px;padding:40px 24px;position:relative;overflow:hidden}
+.share::before{content:"";position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.05) 1px,transparent 1px);background-size:56px 56px;-webkit-mask-image:linear-gradient(120deg,transparent 30%,#000);mask-image:linear-gradient(120deg,transparent 30%,#000);pointer-events:none}
+.share > *{position:relative}
 .share h2,.share h3{color:#fff}
 .share .eyebrow{color:#7FE3E7}
 .share .lead{color:#C7D4EA}
-.share-grid{display:grid;gap:28px;margin-top:28px}
-.share-col h3{font-size:1.15rem;margin-bottom:14px;display:flex;align-items:center;gap:10px}
+.share-grid{display:grid;gap:32px;margin-top:36px}
+.share-col h3{font-size:1.15rem;margin-bottom:16px;display:flex;align-items:center;gap:10px}
 .share-col h3 svg{width:24px;height:24px;color:var(--teal-l)}
-.share ul{list-style:none;display:grid;gap:12px}
+.share ul{list-style:none;display:grid;gap:14px}
 .share li{display:flex;gap:12px;color:#DCE5F3}
 .share li svg{flex:0 0 20px;width:20px;height:20px;color:var(--teal-l);margin-top:3px}
 .net-diagram{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);border-radius:4px;padding:16px}
 
-/* FAQ */
-.faq{max-width:760px;margin:36px auto 0;display:grid;gap:10px}
-details{background:#fff;border:1px solid var(--line);border-radius:var(--r);transition:border-color .2s}
-details[open]{border-color:var(--teal)}
-summary{list-style:none;cursor:pointer;padding:18px 20px;font-weight:700;display:flex;justify-content:space-between;align-items:center;gap:16px}
+/* FAQ: lista con divisores */
+.faq{margin-top:40px;display:grid;border-top:1px solid var(--line)}
+details{border-bottom:1px solid var(--line)}
+summary{list-style:none;cursor:pointer;padding:22px 0;font-weight:600;font-size:1.05rem;display:flex;justify-content:space-between;align-items:center;gap:20px;transition:color .2s}
+summary:hover,details[open] summary{color:var(--teal-d)}
 summary::-webkit-details-marker{display:none}
-summary .pm{flex:0 0 28px;height:28px;border-radius:2px;background:var(--soft);display:grid;place-items:center;color:var(--teal-d);transition:transform .25s}
-details[open] summary .pm{transform:rotate(45deg)}
+summary .pm{flex:0 0 32px;height:32px;border:1.5px solid var(--line);display:grid;place-items:center;color:var(--navy);transition:transform .25s,background-color .2s,border-color .2s,color .2s}
+details[open] summary .pm{transform:rotate(45deg);background:var(--teal-d);border-color:var(--teal-d);color:#fff}
 summary .pm svg{width:16px;height:16px}
 .btn .lucide-arrow-right{width:18px;height:18px;transition:transform .2s}
 .btn:hover .lucide-arrow-right{transform:translateX(3px)}
-details p{padding:0 20px 20px;color:var(--muted)}
+details p{padding:0 52px 24px 0;color:var(--muted)}
+.faq-more{margin-top:18px;color:var(--muted)}
+.faq-more a{color:var(--teal-d);font-weight:600;text-decoration:none;border-bottom:1.5px solid currentColor}
 
 /* Contacto */
-.contact-grid{display:grid;gap:22px;margin-top:36px;max-width:880px;margin-left:auto;margin-right:auto}
-.box{background:#fff;border:1px solid var(--line);border-radius:6px;padding:28px 24px}
-.box h3{font-size:1.2rem;margin-bottom:6px}
-.box > p{color:var(--muted);margin-bottom:20px}
-.field{display:grid;gap:6px;margin-bottom:14px}
-.field label{font-weight:600;font-size:.92rem}
-.field input{height:52px;border:1.5px solid var(--line);border-radius:0;padding:0 14px;font-size:1rem;color:var(--navy);background:var(--bg);font-family:inherit}
-.field input:focus{border-color:var(--teal);background:#fff;outline:none}
+.contact-grid{display:grid;gap:22px;margin-top:52px;max-width:960px;margin-left:auto;margin-right:auto}
+.box{background:#fff;border:1px solid var(--line);border-radius:6px;padding:32px 28px}
+.box h3{font-size:1.25rem;margin-bottom:6px}
+.box > p{color:var(--muted);margin-bottom:24px}
+.field{display:grid;gap:6px;margin-bottom:16px}
+.field label{font-weight:600;font-size:.9rem}
+.field input{height:52px;border:1.5px solid var(--line);border-radius:0;padding:0 14px;font-size:1rem;color:var(--navy);background:var(--bg);font-family:inherit;transition:border-color .2s,background-color .2s}
+.field input:focus{border-color:var(--teal-d);background:#fff;outline:none}
 .form-note{font-size:.85rem;color:var(--muted);margin-top:10px;min-height:1.2em}
 .form-note.ok{color:var(--teal-d);font-weight:600}
 .form-note.err{color:#C0392B;font-weight:600}
@@ -176,9 +187,18 @@ footer .logo{color:#fff}
   .cta-row{flex-direction:row}
   .grid-b{grid-template-columns:1fr 1fr}
   .steps{grid-template-columns:repeat(3,1fr)}
+  .step{border-bottom:0;border-right:1px solid var(--line)}
+  .step:last-child{border-right:0}
 }
 @media (min-width:900px){
-  section{padding:96px 0}
+  section{padding:112px 0}
+  .price-card{grid-template-columns:1fr 1.1fr}
+  .price-top{padding:56px 52px}
+  .price-body{padding:52px}
+  .faq-layout{display:grid;grid-template-columns:.85fr 1.15fr;gap:88px;align-items:start}
+  .faq-layout .faq-head{text-align:left;position:sticky;top:130px}
+  .faq-layout .faq-head .lead{margin:0}
+  .faq-layout .faq{margin-top:0}
   .nav-links{display:flex}
   .hero{padding:56px 0 112px}
   .hero-grid{grid-template-columns:1fr 1fr;gap:72px}
@@ -310,19 +330,19 @@ footer .logo{color:#fff}
     </div>
     <div class="steps">
       <article class="step reveal">
-        <span class="step-num">1</span>
+        <span class="step-num">01</span>
         <div class="ico"><i data-lucide="credit-card"></i></div>
         <h3>Te suscribís</h3>
         <p>Elegís el plan de USD 4 por mes y pagás con Mercado Pago.</p>
       </article>
       <article class="step reveal">
-        <span class="step-num">2</span>
+        <span class="step-num">02</span>
         <div class="ico"><i data-lucide="smartphone"></i></div>
         <h3>Bajás la app</h3>
         <p>Instalás la app de W-7 en tu celular Android e iniciás sesión.</p>
       </article>
       <article class="step reveal">
-        <span class="step-num">3</span>
+        <span class="step-num">03</span>
         <div class="ico"><i data-lucide="wifi"></i></div>
         <h3>Tu celular se conecta solo</h3>
         <p>Cuando pasás cerca de una casa W-7, te conectás sin ver ni escribir claves.</p>
@@ -365,6 +385,7 @@ footer .logo{color:#fff}
         <p>Impuestos incluidos · El mes dura 30 días</p>
       </div>
       <div class="price-body">
+        <h3>Todo incluido en el plan</h3>
         <ul class="checks">
           <li><i data-lucide="circle-check"></i>Wifi en todas las casas W-7 del país</li>
           <li><i data-lucide="circle-check"></i>Conexión automática con la app de Android</li>
@@ -432,10 +453,12 @@ footer .logo{color:#fff}
 
 <!-- 6. PREGUNTAS FRECUENTES -->
 <section id="preguntas">
-  <div class="wrap">
-    <div class="center reveal">
+  <div class="wrap faq-layout">
+    <div class="center faq-head reveal">
       <span class="eyebrow">Preguntas frecuentes</span>
       <h2>Lo que más nos preguntan</h2>
+      <p class="lead">Respuestas cortas a las dudas de siempre.</p>
+      <p class="faq-more">¿No está tu pregunta? <a href="#contacto">Escribinos</a></p>
     </div>
     <div class="faq">
       <details class="reveal"><summary>¿Necesito comprar un router?<span class="pm"><i data-lucide="plus"></i></span></summary>
