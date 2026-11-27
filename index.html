@@ -182,6 +182,15 @@ footer .logo{color:#fff}
 .reveal.in{opacity:1;transform:none}
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.reveal{opacity:1;transform:none}html{scroll-behavior:auto}}
 
+/* Celular: títulos sin palabras sueltas, nada se sale de la pantalla, links cómodos para el dedo */
+h1,h2,h3{text-wrap:balance}
+.contact-grid > *,.share-grid > *,.hero-grid > *{min-width:0}
+.btn-wa{padding:0 18px;text-align:center}
+.foot-links a{display:inline-flex;align-items:center;min-height:44px}
+.login{display:inline-flex;align-items:center;min-height:44px}
+@media (max-width:899px){body{padding-bottom:env(safe-area-inset-bottom)}}
+@media (max-width:359px){.wrap{padding:0 16px}.box{padding:28px 20px}.btn{padding:0 20px}}
+
 /* Tablet / escritorio */
 @media (min-width:640px){
   .cta-row{flex-direction:row}
@@ -326,7 +335,7 @@ footer .logo{color:#fff}
     <div class="center reveal">
       <span class="eyebrow">Cómo funciona</span>
       <h2>Tres pasos y listo</h2>
-      <p class="lead">No tenés que configurar nada raro. Te lleva unos minutos.</p>
+      <p class="lead">De fácil acceso, configuración rápida y sencilla.</p>
     </div>
     <div class="steps">
       <article class="step reveal">
@@ -345,7 +354,7 @@ footer .logo{color:#fff}
         <span class="step-num">03</span>
         <div class="ico"><i data-lucide="wifi"></i></div>
         <h3>Tu celular se conecta solo</h3>
-        <p>Cuando pasás cerca de una casa W-7, te conectás sin ver ni escribir claves.</p>
+        <p>Cuando estás dentro del radio de una casa W-7, se conecta automáticamente.</p>
       </article>
     </div>
   </div>
@@ -363,8 +372,8 @@ footer .logo{color:#fff}
       <div class="card reveal"><div class="ico"><i data-lucide="package-x"></i></div><div><h3>Sin equipos</h3><p>No comprás nada. Se usa el módem que ya tenés en tu casa.</p></div></div>
       <div class="card reveal"><div class="ico"><i data-lucide="wrench"></i></div><div><h3>Sin instalación</h3><p>No hace falta tocar cables ni esperar a nadie.</p></div></div>
       <div class="card reveal"><div class="ico"><i data-lucide="file-x"></i></div><div><h3>Sin contrato</h3><p>No firmás nada ni te atás a un plazo.</p></div></div>
-      <div class="card reveal"><div class="ico"><i data-lucide="circle-x"></i></div><div><h3>Cancelás cuando quieras</h3><p>Si no te sirve, lo das de baja y listo. Sin vueltas.</p></div></div>
-      <div class="card reveal"><div class="ico"><i data-lucide="shield-check"></i></div><div><h3>Tu red sigue siendo tuya</h3><p>Lo que compartís va por separado. Tu wifi de siempre queda igual y privado.</p></div></div>
+      <div class="card reveal"><div class="ico"><i data-lucide="circle-x"></i></div><div><h3>Cancelás cuando quieras</h3><p>Te podés dar de baja cuando quieras, sin trámites.</p></div></div>
+      <div class="card reveal"><div class="ico"><i data-lucide="shield-check"></i></div><div><h3>Tu red sigue siendo tuya</h3><p>Lo que compartís va por separado. Tus datos no se modifican y mantienen su privacidad.</p></div></div>
       <div class="card reveal"><div class="ico"><i data-lucide="map-pin"></i></div><div><h3>Te sirve en todo el país</h3><p>Usás el wifi de cualquier casa W-7, en tu barrio o donde estés.</p></div></div>
     </div>
   </div>
