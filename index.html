@@ -72,6 +72,16 @@ header.scrolled{border-color:var(--line)}
 .float-card svg{width:22px;height:22px;color:var(--teal-l)}
 .float-card strong{display:block;font-size:1.15rem;line-height:1.1;letter-spacing:-.02em}
 .float-card span{display:block;font-size:.78rem;color:#B9C7DE}
+.float-card.earn{left:auto;bottom:auto;right:-14px;top:-18px;background:var(--grad)}
+.float-card.earn svg{color:#fff}
+.float-card.earn span{color:#E6FAFB}
+.earn-banner{display:flex;align-items:center;gap:14px;margin-top:24px;max-width:580px;padding:16px 18px;background:var(--grad);color:#fff;text-decoration:none;border-radius:4px;box-shadow:0 16px 34px -16px rgba(14,135,145,.7);transition:transform .2s,box-shadow .2s}
+.earn-banner:hover{transform:translateY(-2px);box-shadow:0 20px 40px -16px rgba(14,135,145,.8)}
+.earn-banner .earn-ico{flex:0 0 46px;height:46px;display:grid;place-items:center;background:rgba(255,255,255,.18);border-radius:4px}
+.earn-banner .earn-ico svg{width:24px;height:24px}
+.earn-banner strong{display:block;font-size:1.2rem;line-height:1.15;letter-spacing:-.02em}
+.earn-banner span{display:block;font-size:.88rem;color:#E6FAFB}
+.earn-banner .earn-go{margin-left:auto;flex:0 0 auto;width:22px;height:22px}
 .pulse{animation:pulse 2.6s ease-out infinite;transform-origin:center;transform-box:fill-box}
 .pulse.d2{animation-delay:.9s}.pulse.d3{animation-delay:1.8s}
 @keyframes pulse{0%{opacity:.9;transform:scale(.6)}100%{opacity:0;transform:scale(1.6)}}
@@ -264,6 +274,11 @@ h1,h2,h3{text-wrap:balance}
         <a href="#precio" class="btn btn-primary">Quiero sumarme<i data-lucide="arrow-right"></i></a>
         <a href="#como-funciona" class="btn btn-ghost">Cómo funciona</a>
       </div>
+      <a href="#compartir" class="earn-banner">
+        <span class="earn-ico"><i data-lucide="hand-coins"></i></span>
+        <span><strong>Cobrá USD 8 por mes</strong><span>por cada nodo W-7 que tengas en tu casa</span></span>
+        <i data-lucide="arrow-right" class="earn-go"></i>
+      </a>
       <div class="chips">
         <span class="chip"><i data-lucide="circle-check"></i>Cancelás cuando quieras</span>
         <span class="chip"><i data-lucide="circle-check"></i>App para Android</span>
@@ -272,6 +287,7 @@ h1,h2,h3{text-wrap:balance}
 
     <div class="hero-art">
       <div class="float-card"><i data-lucide="wifi"></i><div><strong>USD 4 / mes</strong><span>Impuestos incluidos · sin contrato</span></div></div>
+      <div class="float-card earn"><i data-lucide="hand-coins"></i><div><strong>+ USD 8 / mes</strong><span>por cada nodo en tu casa</span></div></div>
       <svg viewBox="0 0 440 340" aria-hidden="true">
         <defs>
           <linearGradient id="g1" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#2DBFC6"/><stop offset="1" stop-color="#0E8791"/></linearGradient>
